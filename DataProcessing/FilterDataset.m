@@ -3,17 +3,20 @@ function FilterDataset(whatAnalysis)
 % -> HCTSA_filt.mat
 %-------------------------------------------------------------------------------
 
-if nargin < 1
-    whatAnalysis = 'Excitatory_SHAM';
-end
+% if nargin < 1
+%     whatAnalysis = 'Excitatory_SHAM';
+% end
 
 leftOrRight = {'right','left','control'};
 numRegions = length(leftOrRight);
 
+numAnalysis=length(whatAnalysis);
+
+for h=1:numAnalysis
+
 for k = 1:numRegions
     [prePath,rawData] = GiveMeLeftRightInfo(leftOrRight{k});
-
-    switch whatAnalysis
+    switch (whatAnalysis(h))
     case 'Excitatory_SHAM'
         % Already in HCTSA.mat
     case 'Wild_SHAM'
@@ -22,7 +25,7 @@ for k = 1:numRegions
         SHAMFile = fullfile(prePath,'HCTSA_SHAM.mat');
         TS_FilterData(rawData,ts_keepIDs,[],SHAMFile);
         % Now add the wildInhib data:
-        TS_combine(SHAMFile,fullfile(prePath,'HCTSA_wildInhib.mat'),false,false,fullfile(prePath,'HCTSA_wildInhib_SHAM.mat'),true);
+        %TS_combine(SHAMFile,fullfile(prePath,'HCTSA_wildInhib.mat'),false,false,fullfile(prePath,'HCTSA_wildInhib_SHAM.mat'),true);
     case 'PVCre_SHAM'
         % Need to remove Excitatory data, and add PVCre data
         SHAM_IDs = TS_getIDs('SHAM',rawData,'ts');
@@ -80,5 +83,7 @@ for k = 1:numRegions
         TS_combine(intermediateFile,fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_Exc_PVCre_Wild_SHAM.mat'),true);
     end
 end
+end
+
 
 end
