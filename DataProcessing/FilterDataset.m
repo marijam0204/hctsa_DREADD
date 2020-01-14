@@ -4,7 +4,7 @@ function FilterDataset(whatAnalysis)
 %-------------------------------------------------------------------------------
 
 if nargin < 1
-    whatAnalysis = 'PVCre_SHAM';
+    whatAnalysis = 'Excitatory_SHAM';
 end
 
 leftOrRight = {'right','left','control'};
