@@ -3,20 +3,17 @@ function FilterDataset(whatAnalysis)
 % -> HCTSA_filt.mat
 %-------------------------------------------------------------------------------
 
-% if nargin < 1
-%     whatAnalysis = 'Excitatory_SHAM';
-% end
+if nargin < 1
+    whatAnalysis = 'PVCre_SHAM';
+end
 
 leftOrRight = {'right','left','control'};
 numRegions = length(leftOrRight);
 
-numAnalysis=length(whatAnalysis);
-
-for h=1:numAnalysis
 
 for k = 1:numRegions
     [prePath,rawData] = GiveMeLeftRightInfo(leftOrRight{k});
-    switch (whatAnalysis(h))
+    switch whatAnalysis
     case 'Excitatory_SHAM'
         % Already in HCTSA.mat
     case 'Wild_SHAM'
@@ -82,7 +79,6 @@ for k = 1:numRegions
         % Now add PVCre:
         TS_combine(intermediateFile,fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_Exc_PVCre_Wild_SHAM.mat'),true);
     end
-end
 end
 
 
