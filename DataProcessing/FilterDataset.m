@@ -32,6 +32,35 @@ for k = 1:numRegions
         TS_FilterData(rawData,ts_keepIDs,[],SHAMFile);
         % Now add the PVCre data:
         TS_combine(SHAMFile,fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_PVCre_SHAM.mat'),true);
+  case 'CAMK_SHAM'
+          % Need to remove Excitatory data, and add CAMK data
+          SHAM_IDs = TS_getIDs('SHAM',rawData,'ts');
+          [~,TS13] = TS_getIDs('ts4',rawData,'ts'); % exclude ts4
+          ts_keepIDs = intersect(SHAM_IDs,TS13);
+          SHAMFile = fullfile(prePath,'HCTSA_SHAM.mat');
+          TS_FilterData(rawData,ts_keepIDs,[],SHAMFile);
+          % Now add the CAMK data:
+          TS_combine(SHAMFile,fullfile(prePath,'HCTSA_CAMK.mat'),false,false,fullfile(prePath,'HCTSA_CAMK_SHAM.mat'),true);
+  case 'CAMK_Excitatory'
+            % Need to remove SHAM data, and add CAMK data
+            Excitatory_IDs = TS_getIDs('excitatory',rawData,'ts');
+            [~,TS13] = TS_getIDs('ts4',rawData,'ts'); % exclude ts4
+            ts_keepIDs = intersect(Excitatory_IDs,TS13);
+            ExcFile = fullfile(prePath,'HCTSA_Excitatory.mat');
+            TS_FilterData(rawData,ts_keepIDs,[],ExcFile);
+            % Now add the CAMK data:
+            CAMKFile = fullfile(prePath,'HCTSA_CAMK.mat');
+            TS_combine(ExcFile,CAMKFile,false,false,fullfile(prePath,'HCTSA_CAMK_Excitatory.mat'),true);
+  case 'CAMK_PVcre'
+           CAMKFile = fullfile(prePath,'HCTSA_CAMK.mat');
+           PVCreFile = fullfile(prePath,'HCTSA_PVCre.mat');
+           TS_combine(PVCreFile,CAMKFile,false,false,fullfile(prePath,'HCTSA_CAMK_PVCre.mat'),true);
+  case 'CAMK_Excitatory_PVCre_SHAM'
+             [~,ts_keepIDs] = TS_getIDs('ts4',rawData,'ts'); % exclude ts4
+             T13File = fullfile(prePath,'HCTSA_T13.mat');
+             TS_FilterData(rawData,ts_keepIDs,[],T13File);
+             % Combine all three experimental data together:
+             TS_combine(T13File,fullfile(prePath,'HCTSA_CAMK.mat'),fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_CAMK_Exc_PVCre_SHAM.mat'),true);           
     case 'PVCre_Wild'
         % Exclude ts4 from wildInhib data:
         wildInhibData = fullfile(prePath,'HCTSA_wildInhib.mat');
