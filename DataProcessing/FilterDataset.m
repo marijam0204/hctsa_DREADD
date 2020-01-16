@@ -51,7 +51,7 @@ for k = 1:numRegions
             % Now add the CAMK data:
             CAMKFile = fullfile(prePath,'HCTSA_CAMK.mat');
             TS_combine(ExcFile,CAMKFile,false,false,fullfile(prePath,'HCTSA_CAMK_Excitatory.mat'),true);
-  case 'CAMK_PVcre'
+  case 'CAMK_PVCre'
            CAMKFile = fullfile(prePath,'HCTSA_CAMK.mat');
            PVCreFile = fullfile(prePath,'HCTSA_PVCre.mat');
            TS_combine(PVCreFile,CAMKFile,false,false,fullfile(prePath,'HCTSA_CAMK_PVCre.mat'),true);

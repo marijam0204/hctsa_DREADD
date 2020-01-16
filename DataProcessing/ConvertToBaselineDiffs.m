@@ -16,7 +16,7 @@ end
 switch whatAnalysis
 case {'Excitatory_SHAM','Wild_SHAM','Excitatory_Wild'}
     threeOrFour = 4; % there are four time points
-case {'CAMK_SHAM','CAMK_Excitatory','CAMK_PVcre','CAMK_Excitatory_PVCre_SHAM','PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild','Excitatory_PVCre_Wild_SHAM'}
+case {'CAMK_SHAM','CAMK_Excitatory','CAMK_PVCre','CAMK_Excitatory_PVCre_SHAM','PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild','Excitatory_PVCre_Wild_SHAM'}
     % PVCre data doesn't contain information about the fourth time point...
     threeOrFour = 3;
 otherwise
@@ -31,6 +31,7 @@ dataRaw = load(rawData);
 %-------------------------------------------------------------------------------
 % 1) Get unique by mouse ID
 [expTypeMouseID,timePoint] = ConvertToMouseExpID(dataRaw.TimeSeries,leftOrRight);
+%keyboard
 uniqueMiceExp = unique(expTypeMouseID);
 numMice = length(uniqueMiceExp);
 fprintf(1,'We found %u mice for %s in region %s\n',numMice,whatAnalysis,leftOrRight);

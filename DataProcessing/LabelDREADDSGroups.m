@@ -30,6 +30,14 @@ else
         TS_LabelGroups(whatData,{'excitatory','SHAM'});
     case 'PVCre_SHAM'
         TS_LabelGroups(whatData,{'PVCre','SHAM'});
+    case 'CAMK_SHAM'
+        TS_LabelGroups(whatData,{'CAMK','SHAM'});
+    case 'CAMK_Excitatory'
+        TS_LabelGroups(whatData,{'CAMK','excitatory'});
+    case 'CAMK_PVCre'
+        TS_LabelGroups(whatData,{'CAMK','PVCre'});
+    case 'CAMK_Excitatory_PVCre_SHAM'
+        TS_LabelGroups(whatData,{'CAMK','excitatory','PVCre','SHAM'});
     case 'Wild_SHAM'
         TS_LabelGroups(whatData,{'wildInhib','SHAM'});
     case 'Excitatory_PVCre'
