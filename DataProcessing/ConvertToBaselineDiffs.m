@@ -19,6 +19,8 @@ case {'Excitatory_SHAM','Wild_SHAM','Excitatory_Wild'}
 case {'PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild','Excitatory_PVCre_Wild_SHAM'}
     % PVCre data doesn't contain information about the fourth time point...
     threeOrFour = 3;
+otherwise
+    error('I don''t know what you mean by %s',whatAnalysis)
 end
 
 %-------------------------------------------------------------------------------

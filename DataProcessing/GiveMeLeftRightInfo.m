@@ -40,25 +40,25 @@ case 'PVCre_SHAM'
     dataTime = fullfile(prePath,sprintf('HCTSA_PVCre_SHAM_%s.mat',whatTimePoint));
     dataTimeNorm = fullfile(prePath,sprintf('HCTSA_PVCre_SHAM_%s_N.mat',whatTimePoint));
 case 'CAMK_SHAM'
-        rawData = fullfile(prePath,'HCTSA_CAMK_SHAM.mat');
-        rawDataBL = fullfile(prePath,'HCTSA_baselineSub.mat');
-        dataTime = fullfile(prePath,sprintf('HCTSA_%s.mat',whatTimePoint));
-        dataTimeNorm = fullfile(prePath,sprintf('HCTSA_%s_N.mat',whatTimePoint));
+    rawData = fullfile(prePath,'HCTSA_CAMK_SHAM.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_CAMK_SHAM_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_SHAM_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_CAMK_SHAM_%s_N.mat',whatTimePoint));
 case 'CAMK_PVCre'
       rawData = fullfile(prePath,'HCTSA_CAMK_PVCre.mat');
-      rawDataBL = fullfile(prePath,'HCTSA_baselineSub.mat');
-      dataTime = fullfile(prePath,sprintf('HCTSA_%s.mat',whatTimePoint));
-      dataTimeNorm = fullfile(prePath,sprintf('HCTSA_%s_N.mat',whatTimePoint));
+      rawDataBL = fullfile(prePath,'HCTSA_CAMK_PVCre_baselineSub.mat');
+      dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_PVCre_%s.mat',whatTimePoint));
+      dataTimeNorm = fullfile(prePath,sprintf('HCTSA_CAMK_PVCre_%s_N.mat',whatTimePoint));
 case 'CAMK_Excitatory'
       rawData = fullfile(prePath,'HCTSA_CAMK_Excitatory.mat');
-      rawDataBL = fullfile(prePath,'HCTSA_baselineSub.mat');
-      dataTime = fullfile(prePath,sprintf('HCTSA_%s.mat',whatTimePoint));
-      dataTimeNorm = fullfile(prePath,sprintf('HCTSA_%s_N.mat',whatTimePoint));
+      rawDataBL = fullfile(prePath,'HCTSA_CAMK_Excitatory_baselineSub.mat');
+      dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_baselineSub%s.mat',whatTimePoint));
+      dataTimeNorm = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_%s_N.mat',whatTimePoint));
 case 'CAMK_Excitatory_PVCre_SHAM'
       rawData = fullfile(prePath,'HCTSA_CAMK_Excitatory_PVCre_SHAM.mat');
-      rawDataBL = fullfile(prePath,'HCTSA_baselineSub.mat');
-      dataTime = fullfile(prePath,sprintf('HCTSA_%s.mat',whatTimePoint));
-      dataTimeNorm = fullfile(prePath,sprintf('HCTSA_%s_N.mat',whatTimePoint));
+      rawDataBL = fullfile(prePath,'HCTSA_CAMK_Excitatory_PVCre_SHAM_baselineSub.mat');
+      dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_PVCre_SHAM_%s.mat',whatTimePoint));
+      dataTimeNorm = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_PVCre_SHAM_%s_N.mat',whatTimePoint));
 case 'Excitatory_PVCre'
     rawData = fullfile(prePath,'HCTSA_Exc_PVCre.mat');
     rawDataBL = fullfile(prePath,'HCTSA_Exc_PVCre_baselineSub.mat');
