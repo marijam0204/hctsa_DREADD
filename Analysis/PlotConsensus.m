@@ -13,7 +13,7 @@ end
 switch whatAnalysis
 case 'Excitatory_SHAM'
     T = {'ts2-BL','ts3-BL','ts4-BL'};
-case {'PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM'}
+case {'PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','CAMK_SHAM','CAMK_Excitatory','CAMK_PVCre','CAMK_Excitatory_PVCre_SHAM'}
     T = {'ts2-BL','ts3-BL'};
 end
 numPoints = length(T);

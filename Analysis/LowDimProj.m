@@ -25,6 +25,22 @@ case 'Excitatory_SHAM'
     k1 = {'excitatory','SHAM'};
     groupLabels1 = TS_LabelGroups(nD,k1,false);
     groupLabels2 = TS_LabelGroups(nD,{'ts2','ts3','ts4'},false);
+case 'CAMK_SHAM'
+    k1 = {'CAMK','SHAM'};
+    groupLabels1 = TS_LabelGroups(nD,k1,false);
+    groupLabels2 = TS_LabelGroups(nD,{'ts2','ts3'},false);
+case 'CAMK_Excitatory'
+    k1 = {'CAMK','excitatory'};
+    groupLabels1 = TS_LabelGroups(nD,k1,false);
+    groupLabels2 = TS_LabelGroups(nD,{'ts2','ts3'},false);
+case 'CAMK_PVCre'
+    k1 = {'CAMK','PVCre'};
+    groupLabels1 = TS_LabelGroups(nD,k1,false);
+    groupLabels2 = TS_LabelGroups(nD,{'ts2','ts3'},false);
+case 'CAMK_Excitatory_PVCre_SHAM'
+    k1 = {'CAMK','excitatory','PVCre','SHAM'};
+    groupLabels1 = TS_LabelGroups(nD,k1,false);
+    groupLabels2 = TS_LabelGroups(nD,{'ts2','ts3'},false);
 case 'PVCre_SHAM'
     k1 = {'PVCre','SHAM'};
     groupLabels1 = TS_LabelGroups(nD,k1,false);

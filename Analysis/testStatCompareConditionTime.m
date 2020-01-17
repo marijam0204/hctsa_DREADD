@@ -13,7 +13,7 @@ doExact = false;
 thresholdGood = 0.6;
 
 %-------------------------------------------------------------------------------
-conditions = {'Excitatory_SHAM','PVCre_SHAM'};
+conditions = {'CAMK_SHAM','PVCre_SHAM'};
 numConditions = length(conditions);
 T = {'ts2-BL','ts3-BL'};
 numTimePoints = length(T);
