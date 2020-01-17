@@ -19,7 +19,7 @@ for k = 1:numTS
     % timePoint:
     % ID to identify individual mice:
     if isCAMK(k)
-        timePoint{k} = keywordSplit{k}{2};
+        timePoint{k} = keywordSplit{k}{3}; % keyword is ts1/2/3
         expTypeMouseID{k} = horzcat(keywordSplit{k}{1},keywordSplit{k}{2},theName(1:8));
     else
         if isPVCre(k) || isWildInhib(k) || strcmp(leftOrRight,'left')
