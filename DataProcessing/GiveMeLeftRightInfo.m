@@ -16,11 +16,11 @@ end
 % Parent directory
 switch leftOrRight
     case 'left'
-        prePath = 'HCTSA_LeftCTX';
+        prePath = 'HCTSA_LeftdmCP';  %for CAMK and others it is LeftCTX
     case 'right'
-        prePath = 'HCTSA_RightCTX';
-    case 'control'
-        prePath = 'HCTSA_Control';
+        prePath = 'HCTSA_RightdmCP';
+    %case 'control'
+        %prePath = 'HCTSA_Control';
     otherwise
         error('Unknown region ''%s''',leftOrRight);
 end
@@ -99,6 +99,28 @@ case 'SST_SSTcnt_PV_SHAM'
     rawDataBL = fullfile(prePath,'HCTSA_SST_SSTcnt_PV_SHAM_baselineSub.mat');
     dataTime = fullfile(prePath,sprintf('HCTSA_SST_SSTcnt_PV_SHAM_%s.mat',whatTimePoint));
     dataTimeNorm = fullfile(prePath,sprintf('HCTSA_SST_SSTcntPV_SHAM_%s_N.mat',whatTimePoint));
+
+%For D1 analysis there is only left and right for now
+case 'D1exc_D1inh'
+    rawData = fullfile(prePath,'HCTSA_D1exc_D1inh.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_D1exc_D1inh_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_D1exc_D1inh_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_D1exc_D1inh_%s_N.mat',whatTimePoint));
+case 'D1exc_D1cnt'
+    rawData = fullfile(prePath,'HCTSA_D1exc_D1cnt.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_D1exc_D1cnt_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_D1exc_D1cnt_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_D1exc_D1cnt_%s_N.mat',whatTimePoint));
+case 'D1inh_D1cnt'
+    rawData = fullfile(prePath,'HCTSA_D1inh_D1cnt.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_D1inh_D1cnt_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_D1inh_D1cnt_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_D1inh_D1cnt_%s_N.mat',whatTimePoint));
+case 'D1exc_D1inh_D1cnt'
+    rawData = fullfile(prePath,'HCTSA_D1exc_D1inh_D1cnt.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_D1exc_D1inh_D1cnt_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_D1exc_D1inh_D1cnt_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_D1exc_D1inh_D1cnt_%s_N.mat',whatTimePoint));
 otherwise
     error('Unknown analysis: %s',whatAnalysis);
 end

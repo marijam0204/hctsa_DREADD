@@ -19,6 +19,8 @@ case {'Excitatory_SHAM','Wild_SHAM','Excitatory_Wild'}
 case {'SST_SSTcnt','SST_PV','SST_SHAM','PV_SHAM','PV_SSTcnt','SST_SSTcnt_PV_SHAM','CAMK_SHAM','CAMK_Excitatory','CAMK_PVCre','CAMK_Excitatory_PVCre_SHAM','PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild','Excitatory_PVCre_Wild_SHAM'}
     % PVCre data doesn't contain information about the fourth time point...
     threeOrFour = 3;
+case {'D1exc_D1cnt','D1exc_D1inh','D1inh_D1cnt'}
+    threeOrFour = 2; % when there are only 2 timeseries
 otherwise
     error('I don''t know what you mean by %s',whatAnalysis)
 end

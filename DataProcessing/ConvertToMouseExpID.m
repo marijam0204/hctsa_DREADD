@@ -16,6 +16,13 @@ isSHAM = cellfun(@(x)strcmp(x{4},'control'),keywordSplit);
 isSST = cellfun(@(x)strcmp(x{4},'SSTinh'),keywordSplit);
 isSSTcnt = cellfun(@(x)strcmp(x{4},'SSTcontrol'),keywordSplit);
 
+
+%D1 data
+isD1exc = cellfun(@(x)strcmp(x{4},'excitatory'),keywordSplit);
+isD1inh = cellfun(@(x)strcmp(x{4},'inhibitory'),keywordSplit);
+isD1cnt = cellfun(@(x)strcmp(x{4},'control'),keywordSplit);
+
+
 timePoint = cell(length(tsKeywords),1);
 expTypeMouseID = cell(numTS,1);
 for k = 1:numTS
@@ -23,7 +30,7 @@ for k = 1:numTS
 
     % timePoint:
     % ID to identify individual mice:
-    if isPV(k) || isSHAM(k) || isSST(k) || isSSTcnt(k)
+    if isPV(k) || isSHAM(k) || isSST(k) || isSSTcnt(k) || isD1exc(k) || isD1inh(k) || isD1cnt(k)
         timePoint{k} = keywordSplit{k}{3}; % keyword is ts1/2/3
         expTypeMouseID{k} = horzcat(keywordSplit{k}{4},keywordSplit{k}{2},theName(1:8));
     else

@@ -7,7 +7,8 @@ if nargin < 1
     whatAnalysis = 'Excitatory_SHAM';
 end
 
-leftOrRight = {'right','left','control'};
+%leftOrRight = {'right','left','control'};
+leftOrRight = {'right','left'};
 numRegions = length(leftOrRight);
 
 
@@ -167,6 +168,39 @@ for k = 1:numRegions
     case 'SST_SSTcnt_PV_SHAM'
     % already in HCTSA.mat
 
+
+    case 'D1exc_D1inh'
+    % Isolate D1 excitatory and inhibitory
+    ts_keepIDs = TS_getIDs('excitatory',rawData,'ts');
+    D1excFile = fullfile(prePath,'HCTSA_D1exc.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],D1excFile);
+    ts_keepIDs = TS_getIDs('inhibitory',rawData,'ts');
+    D1inhFile = fullfile(prePath,'HCTSA_D1inh.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],D1inhFile);
+    % Now combine them
+    TS_combine(D1excFile,fullfile(prePath,'HCTSA_D1inh.mat'),false,false,fullfile(prePath,'HCTSA_D1exc_D1inh.mat'),true);
+    case 'D1exc_D1cnt'
+    % Isolate D1 excitatory and inhibitory
+    ts_keepIDs = TS_getIDs('excitatory',rawData,'ts');
+    D1excFile = fullfile(prePath,'HCTSA_D1exc.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],D1excFile);
+    ts_keepIDs = TS_getIDs('control',rawData,'ts');
+    D1cntFile = fullfile(prePath,'HCTSA_D1cnt.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],D1cntFile);
+    % Now combine them
+    TS_combine(D1excFile,fullfile(prePath,'HCTSA_D1cnt.mat'),false,false,fullfile(prePath,'HCTSA_D1exc_D1cnt.mat'),true);
+    case 'D1inh_D1cnt'
+    % Isolate D1 excitatory and inhibitory
+    ts_keepIDs = TS_getIDs('inhibitory',rawData,'ts');
+    D1inhFile = fullfile(prePath,'HCTSA_D1inh.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],D1inhFile);
+    ts_keepIDs = TS_getIDs('control',rawData,'ts');
+    D1cntFile = fullfile(prePath,'HCTSA_D1cnt.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],D1cntFile);
+    % Now combine them
+    TS_combine(D1inhFile,fullfile(prePath,'HCTSA_D1cnt.mat'),false,false,fullfile(prePath,'HCTSA_D1inh_D1cnt.mat'),true);
+    case 'D1exc_D1inh_D1cnt'
+    % already in HCTSA.mat
     end
 end
 

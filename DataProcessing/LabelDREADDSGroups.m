@@ -62,7 +62,14 @@ else
     case 'PV_SSTcnt'
         TS_LabelGroups(whatData,{'PV','SSTcontrol'});
     case 'SST_SSTcnt_PV_SHAM'
-        TS_LabelGroups(whatData,{'SSTinh','SSTcontrol','PV','control'});     
+        TS_LabelGroups(whatData,{'SSTinh','SSTcontrol','PV','control'});
+    case 'D1exc_D1cnt'
+            TS_LabelGroups(whatData,{'excitatory','control'});
+    case 'D1exc_D1inh'
+            TS_LabelGroups(whatData,{'excitatory','inhibitory'});
+    case 'D1inh_D1cnt'
+            TS_LabelGroups(whatData,{'inhibitory','control'});
+
     otherwise
         error('Unknown analysis: %s',whatAnalysis);
     end

@@ -22,13 +22,16 @@ classVarFilter = true;
 filterOpt = [0.5,1];
 
 % The areas to analyze:
-whatRegions = {'right','left','control'};
+%whatRegions = {'right','left','control'};
+whatRegions = {'right','left'};
 numRegs = length(whatRegions);
 
 % The types of data groupings to investigate:
-whatAnalysis = {'SST_SSTcnt','SST_SHAM',...
-                'SST_PV',...
-                'PV_SHAM','PV_SSTcnt','SST_SSTcnt_PV_SHAM'};
+%whatAnalysis = {'SST_SSTcnt','SST_SHAM',...
+                %'SST_PV',...
+                %'PV_SHAM','PV_SSTcnt',SST_SSTcnt_PV};
+whatAnalysis = {'D1exc_D1cnt','D1exc_D1inh','D1inh_D1cnt','D1exc_D1inh_D1cnt'}
+
 numAnalyses = length(whatAnalysis);
 
 %-------------------------------------------------------------------------------
