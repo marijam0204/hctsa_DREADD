@@ -66,19 +66,19 @@ for i = 1:numMice
     index_ts = zeros(threeOrFour,1);
     index_ts(1) = find(index & strcmp(timePoint,'ts1'));
     index_ts(2) = find(index & strcmp(timePoint,'ts2'));
-    index_ts(3) = find(index & strcmp(timePoint,'ts3'));
+    %index_ts(3) = find(index & strcmp(timePoint,'ts3'));
 
     % Use indexes to partition original data
     data_baseline = dataRaw.TS_DataMat(index_ts(1),:);
     data_ts2 = dataRaw.TS_DataMat(index_ts(2),:);
-    data_ts3 = dataRaw.TS_DataMat(index_ts(3),:);
+    %data_ts3 = dataRaw.TS_DataMat(index_ts(3),:);
 
     % Transform relative to baseline and save to indices of the new data matrix:
     indexNew = (i-1)*(threeOrFour-1)+1:i*(threeOrFour-1);
     dataMatSubtracted(indexNew(1),:) = f_transform(data_ts2,data_baseline);
-    dataMatSubtracted(indexNew(2),:) = f_transform(data_ts3,data_baseline);
+    %dataMatSubtracted(indexNew(2),:) = f_transform(data_ts3,data_baseline);
     rowLabelsCheck{indexNew(1)} = dataRaw.TimeSeries.Name{index_ts(2)};
-    rowLabelsCheck{indexNew(2)} = dataRaw.TimeSeries.Name{index_ts(3)};
+    %rowLabelsCheck{indexNew(2)} = dataRaw.TimeSeries.Name{index_ts(3)};
 
     if threeOrFour==4
         index_ts(4) = find(index & strcmp(timePoint,'ts4'));
