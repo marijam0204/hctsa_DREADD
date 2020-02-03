@@ -13,7 +13,7 @@ doExact = false;
 thresholdGood = 0.6;
 
 %-------------------------------------------------------------------------------
-conditions = {'CAMK_SHAM','PVCre_SHAM'};
+conditions = {'CAMK_SHAM','Excitatory_SHAM'};
 numConditions = length(conditions);
 T = {'ts2-BL','ts3-BL'};
 numTimePoints = length(T);
@@ -31,7 +31,7 @@ end
 %-------------------------------------------------------------------------------
 % Plot:
 testStatMat = horzcat([testStat{:}]);
-labels = {{'ExcitatorySHAMDelta1'},{'ExcitatorySHAMDelta2'};{'PVCreSHAMDelta1'},{'PVCreSHAMDelta2'}};
+labels = {{'CAMKSHAMDelta1'},{'CAMKSHAMDelta2'};{'ExcitatorySHAMDelta1'},{'ExcitatorySHAMDelta2'}};
 labels = [labels{:}];
 numLabels = length(labels);
 

@@ -52,7 +52,7 @@ case 'CAMK_PVCre'
 case 'CAMK_Excitatory'
       rawData = fullfile(prePath,'HCTSA_CAMK_Excitatory.mat');
       rawDataBL = fullfile(prePath,'HCTSA_CAMK_Excitatory_baselineSub.mat');
-      dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_baselineSub%s.mat',whatTimePoint));
+      dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_%s.mat',whatTimePoint));
       dataTimeNorm = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_%s_N.mat',whatTimePoint));
 case 'CAMK_Excitatory_PVCre_SHAM'
       rawData = fullfile(prePath,'HCTSA_CAMK_Excitatory_PVCre_SHAM.mat');
