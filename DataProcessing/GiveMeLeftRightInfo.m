@@ -69,7 +69,36 @@ case 'Excitatory_PVCre_SHAM'
     rawDataBL = fullfile(prePath,'HCTSA_Exc_PVCre_SHAM_baselineSub.mat');
     dataTime = fullfile(prePath,sprintf('HCTSA_Exc_PVCre_SHAM_%s.mat',whatTimePoint));
     dataTimeNorm = fullfile(prePath,sprintf('HCTSA_Exc_PVCre_SHAM_%s_N.mat',whatTimePoint));
-
+case 'SST_SSTcnt'
+    rawData = fullfile(prePath,'HCTSA_SST_SSTcnt.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_SST_SSTcnt_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_SST_SSTcnt_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_SST_SSTcnt_%s_N.mat',whatTimePoint));
+case 'SST_PV'
+    rawData = fullfile(prePath,'HCTSA_SST_PV.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_SST_PV_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_SST_PV_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_SST_PV_%s_N.mat',whatTimePoint));
+case 'SST_SHAM'
+    rawData = fullfile(prePath,'HCTSA_SST_SHAM.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_SST_SHAM_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_SST_SHAM_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_SST_SHAM_%s_N.mat',whatTimePoint));
+case 'PV_SHAM'
+    rawData = fullfile(prePath,'HCTSA_PV_SHAM.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_PV_SHAM_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_PV_SHAM_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_PV_SHAM_%s_N.mat',whatTimePoint));
+case 'PV_SSTcnt'
+    rawData = fullfile(prePath,'HCTSA_PV_SSTcnt.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_PV_SSTcnt_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_PV_SSTcnt_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_PV_SSTcnt_%s_N.mat',whatTimePoint));
+case 'SST_SSTcnt_PV_SHAM'
+    rawData = fullfile(prePath,'HCTSA_SST_SSTcnt_PV_SHAM.mat');
+    rawDataBL = fullfile(prePath,'HCTSA_SST_SSTcnt_PV_SHAM_baselineSub.mat');
+    dataTime = fullfile(prePath,sprintf('HCTSA_SST_SSTcnt_PV_SHAM_%s.mat',whatTimePoint));
+    dataTimeNorm = fullfile(prePath,sprintf('HCTSA_SST_SSTcntPV_SHAM_%s_N.mat',whatTimePoint));
 otherwise
     error('Unknown analysis: %s',whatAnalysis);
 end

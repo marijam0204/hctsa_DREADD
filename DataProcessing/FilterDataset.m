@@ -114,6 +114,59 @@ for k = 1:numRegions
         TS_combine(T13File,wildInhib_ts13,false,false,intermediateFile,true);
         % Now add PVCre:
         TS_combine(intermediateFile,fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_Exc_PVCre_Wild_SHAM.mat'),true);
+    case 'SST_SSTcnt'
+    % Need to remove PVCre and SHAM, and isolate SST datasets
+    ts_keepIDs = TS_getIDs('SSTinh',rawData,'ts');
+    SSTFile = fullfile(prePath,'HCTSA_SST.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],SSTFile);
+    ts_keepIDs = TS_getIDs('SSTcontrol',rawData,'ts');
+    SSTcntFile = fullfile(prePath,'HCTSA_SSTcnt.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],SSTcntFile);
+    % Now add combine SST and SSTcnt data:
+    TS_combine(SSTFile,fullfile(prePath,'HCTSA_SSTcnt.mat'),false,false,fullfile(prePath,'HCTSA_SST_SSTcnt.mat'),true);
+    case 'SST_PV'
+    % Need to remove SSTcnt and SHAM, and isolate SST and PV datasets
+    ts_keepIDs = TS_getIDs('SSTinh',rawData,'ts');
+    SSTFile = fullfile(prePath,'HCTSA_SST.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],SSTFile);
+    ts_keepIDs = TS_getIDs('PVCre',rawData,'ts');
+    PVFile = fullfile(prePath,'HCTSA_PV.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],PVFile);
+    % Now add combine SST and SSTcnt data:
+    TS_combine(SSTFile,fullfile(prePath,'HCTSA_PV.mat'),false,false,fullfile(prePath,'HCTSA_SST_PV.mat'),true);
+    case 'SST_SHAM'
+    % Need to remove PV and SSTcnt, and isolate SHAM and SST datasets
+    ts_keepIDs = TS_getIDs('SSTinh',rawData,'ts');
+    SSTFile = fullfile(prePath,'HCTSA_SST.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],SSTFile);
+    ts_keepIDs = TS_getIDs('SHAM',rawData,'ts');
+    SHAMFile = fullfile(prePath,'HCTSA_SHAM.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],SHAMFile);
+    % Now add combine SST and SSTcnt data:
+    TS_combine(SSTFile,fullfile(prePath,'HCTSA_SHAM.mat'),false,false,fullfile(prePath,'HCTSA_SST_SHAM.mat'),true);
+    case 'PV_SHAM'
+    % Need to remove SST and SSTcnts, and isolate PV and SHAM datasets
+    ts_keepIDs = TS_getIDs('PVCre',rawData,'ts');
+    PVFile = fullfile(prePath,'HCTSA_PV.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],PVFile);
+    ts_keepIDs = TS_getIDs('SHAM',rawData,'ts');
+    SHAMFile = fullfile(prePath,'HCTSA_SHAM.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],SHAMFile);
+    % Now add combine SST and SSTcnt data:
+    TS_combine(PVFile,fullfile(prePath,'HCTSA_SHAM.mat'),false,false,fullfile(prePath,'HCTSA_PV_SHAM.mat'),true);
+    case 'PV_SSTcnt'
+    % Need to remove SST and SHAM, and isolate PV and SSTcnt datasets
+    ts_keepIDs = TS_getIDs('PVCre',rawData,'ts');
+    PVFile = fullfile(prePath,'HCTSA_PV.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],PVFile);
+    ts_keepIDs = TS_getIDs('SSTcontrol',rawData,'ts');
+    SSTcntFile = fullfile(prePath,'HCTSA_SSTcnt.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],SSTcntFile);
+    % Now add combine SST and SSTcnt data:
+    TS_combine(PVFile,fullfile(prePath,'HCTSA_SSTcnt.mat'),false,false,fullfile(prePath,'HCTSA_PV_SSTcnt.mat'),true);
+    case 'SST_SSTcnt_PV_SHAM'
+    % already in HCTSA.mat
+
     end
 end
 

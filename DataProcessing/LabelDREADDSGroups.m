@@ -50,6 +50,19 @@ else
         TS_LabelGroups(whatData,{'excitatory','PVCre','SHAM'});
     case 'Excitatory_PVCre_Wild_SHAM'
         TS_LabelGroups(whatData,{'excitatory','PVCre','wildInhib','SHAM'});
+    'SST_SSTcnt_PV_SHAM'
+    case 'SST_SSTcnt'
+        TS_LabelGroups(whatData,{'SSTinh','SSTcontrol'});
+    case 'SST_PV'
+        TS_LabelGroups(whatData,{'SSTinh','PV'});
+    case 'SST_SHAM'
+        TS_LabelGroups(whatData,{'SSTinh','control'});
+    case 'PV_SHAM'
+        TS_LabelGroups(whatData,{'PV','control'});
+    case 'PV_SSTcnt'
+        TS_LabelGroups(whatData,{'PV','SSTcontrol'});
+    case 'SST_SSTcnt_PV_SHAM'
+        TS_LabelGroups(whatData,{'SSTinh','SSTcontrol','PV','control'});     
     otherwise
         error('Unknown analysis: %s',whatAnalysis);
     end
