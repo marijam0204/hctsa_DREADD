@@ -85,7 +85,7 @@ xlim([0.9,3.1])
 title(sprintf('%s: %u-fold, %u repeats, %u nulls',whatAnalysis,numFolds,numRepeats,numNulls),...
                                 'interpreter','none')
 f.Position = [1000,1158,219,180];
-ax.YLim = [30,90];
+ax.YLim = [10,90];
 saveas(f,sprintf('ClassificationFigure_%s.svg',whatAnalysis),'svg');
 
 end
