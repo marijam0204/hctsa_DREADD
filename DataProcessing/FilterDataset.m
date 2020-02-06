@@ -7,8 +7,8 @@ if nargin < 1
     whatAnalysis = 'Excitatory_SHAM';
 end
 
-%leftOrRight = {'right','left','control'};
-leftOrRight = {'right','left'};
+leftOrRight = {'right','left','control'};
+%leftOrRight = {'right','left'};
 numRegions = length(leftOrRight);
 
 
@@ -56,18 +56,32 @@ for k = 1:numRegions
            CAMKFile = fullfile(prePath,'HCTSA_CAMK.mat');
            PVCreFile = fullfile(prePath,'HCTSA_PVCre.mat');
            TS_combine(PVCreFile,CAMKFile,false,false,fullfile(prePath,'HCTSA_CAMK_PVCre.mat'),true);
-  case 'CAMK_Excitatory_PVCre_SHAM'
-    % Exclude ts4 from excitatory & sham data:
-    [~,ts_keepIDs] = TS_getIDs('ts4',rawData,'ts');
-    T13File = fullfile(prePath,'HCTSA_T13.mat');
-    TS_FilterData(rawData,ts_keepIDs,[],T13File);
+  case 'CAMK_Excitatory_PVCre'
+    % Exclude ts4 from excitatory data:
+    Excitatory_IDs = TS_getIDs('excitatory',rawData,'ts');
+    [~,TS13] = TS_getIDs('ts4',rawData,'ts'); % exclude ts4
+    ts_keepIDs = intersect(Excitatory_IDs,TS13);
+    ExcFile = fullfile(prePath,'HCTSA_Excitatory.mat');
+    TS_FilterData(rawData,ts_keepIDs,[],ExcFile);
     % CAMK data
       CAMKFile = fullfile(prePath,'HCTSA_CAMK.mat');
     % Combine all three experimental data together:
-    intermediateFile = fullfile(prePath,'HCTSA_Exc_SHAM_CAMK_t13.mat');
-    TS_combine(T13File,CAMKFile,false,false,intermediateFile,true);
+    intermediateFile = fullfile(prePath,'HCTSA_CAMK_Exc.mat');
+    TS_combine(ExcFile,CAMKFile,false,false,intermediateFile,true);
     % Now add PVCre:
-    TS_combine(intermediateFile,fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_Exc_SHAM_CAMK_PVCre.mat'),true);
+    TS_combine(intermediateFile,fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_CAMK_Excitatory_PVCre.mat'),true);
+case 'CAMK_Excitatory_PVCre_SHAM'
+  % Exclude ts4 from excitatory & sham data:
+  [~,ts_keepIDs] = TS_getIDs('ts4',rawData,'ts');
+  T13File = fullfile(prePath,'HCTSA_T13.mat');
+  TS_FilterData(rawData,ts_keepIDs,[],T13File);
+  % CAMK data
+  CAMKFile = fullfile(prePath,'HCTSA_CAMK.mat');
+  % Combine all three experimental data together:
+  intermediateFile = fullfile(prePath,'HCTSA_CAMK_Exc.mat');
+  TS_combine(T13File,CAMKFile,false,false,intermediateFile,true);
+  % Now add PVCre:
+  TS_combine(intermediateFile,fullfile(prePath,'HCTSA_PVCre.mat'),false,false,fullfile(prePath,'HCTSA_Exc_SHAM_CAMK_PVCre.mat'),true);
 
   case 'PVCre_Wild'
         % Exclude ts4 from wildInhib data:

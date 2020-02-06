@@ -21,13 +21,13 @@ if doBL
 else
     tsCell = {'ts1','ts2','ts3','ts4'};
 end
-if ismember(whatAnalysis,{'D1exc_D1cnt','D1exc_D1inh','D1inh_D1cnt','SST_SSTcnt','SST_PV','SST_SHAM','PV_SHAM','PV_SSTcnt','SST_SSTcnt_PV_SHAM','CAMK_SHAM','CAMK_Excitatory','CAMK_PVCre','CAMK_Excitatory_PVCre_SHAM','PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild'})
+if ismember(whatAnalysis,{'D1exc_D1cnt','D1exc_D1inh','D1inh_D1cnt','SST_SSTcnt','SST_PV','SST_SHAM','PV_SHAM','PV_SSTcnt','SST_SSTcnt_PV_SHAM','CAMK_SHAM','CAMK_Excitatory','CAMK_PVCre','CAMK_Excitatory_PVCre_SHAM','CAMK_Excitatory_PVCre','PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild'})
     tsCell = tsCell(1:end-1); % (for this data we only have three time points)
 end
 numTimePoints = length(tsCell);
 
-%leftOrRight = {'right','left','control'};
-leftOrRight = {'right','left'};
+leftOrRight = {'right','left','control'};
+%leftOrRight = {'right','left'};
 
 numRegions = length(leftOrRight);
 

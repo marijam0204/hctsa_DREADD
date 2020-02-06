@@ -16,7 +16,7 @@ end
 switch whatAnalysis
 case {'Excitatory_SHAM','Wild_SHAM','Excitatory_Wild'}
     threeOrFour = 4; % there are four time points
-case {'SST_SSTcnt','SST_PV','SST_SHAM','PV_SHAM','PV_SSTcnt','SST_SSTcnt_PV_SHAM','CAMK_SHAM','CAMK_Excitatory','CAMK_PVCre','CAMK_Excitatory_PVCre_SHAM','PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild','Excitatory_PVCre_Wild_SHAM'}
+case {'SST_SSTcnt','SST_PV','SST_SHAM','PV_SHAM','PV_SSTcnt','SST_SSTcnt_PV_SHAM','CAMK_SHAM','CAMK_Excitatory','CAMK_PVCre','CAMK_Excitatory_PVCre_SHAM','CAMK_Excitatory_PVCre','PVCre_SHAM','Excitatory_PVCre','Excitatory_PVCre_SHAM','PVCre_Wild','Excitatory_PVCre_Wild_SHAM'}
     % PVCre data doesn't contain information about the fourth time point...
     threeOrFour = 3;
 case {'D1exc_D1cnt','D1exc_D1inh','D1inh_D1cnt'}
@@ -66,19 +66,19 @@ for i = 1:numMice
     index_ts = zeros(threeOrFour,1);
     index_ts(1) = find(index & strcmp(timePoint,'ts1'));
     index_ts(2) = find(index & strcmp(timePoint,'ts2'));
-    %index_ts(3) = find(index & strcmp(timePoint,'ts3'));
+    index_ts(3) = find(index & strcmp(timePoint,'ts3')); %to be commented for D1
 
     % Use indexes to partition original data
     data_baseline = dataRaw.TS_DataMat(index_ts(1),:);
     data_ts2 = dataRaw.TS_DataMat(index_ts(2),:);
-    %data_ts3 = dataRaw.TS_DataMat(index_ts(3),:);
+    data_ts3 = dataRaw.TS_DataMat(index_ts(3),:); %to be commented for D1
 
     % Transform relative to baseline and save to indices of the new data matrix:
     indexNew = (i-1)*(threeOrFour-1)+1:i*(threeOrFour-1);
     dataMatSubtracted(indexNew(1),:) = f_transform(data_ts2,data_baseline);
-    %dataMatSubtracted(indexNew(2),:) = f_transform(data_ts3,data_baseline);
+    dataMatSubtracted(indexNew(2),:) = f_transform(data_ts3,data_baseline); %to be commented for D1
     rowLabelsCheck{indexNew(1)} = dataRaw.TimeSeries.Name{index_ts(2)};
-    %rowLabelsCheck{indexNew(2)} = dataRaw.TimeSeries.Name{index_ts(3)};
+    rowLabelsCheck{indexNew(2)} = dataRaw.TimeSeries.Name{index_ts(3)}; %to be commented for D1
 
     if threeOrFour==4
         index_ts(4) = find(index & strcmp(timePoint,'ts4'));

@@ -16,11 +16,11 @@ end
 % Parent directory
 switch leftOrRight
     case 'left'
-        prePath = 'HCTSA_LeftdmCP';  %for CAMK and others it is LeftCTX
+        prePath = 'HCTSA_LeftCTX';  %for CAMK and others it is LeftCTX
     case 'right'
-        prePath = 'HCTSA_RightdmCP';
-    %case 'control'
-        %prePath = 'HCTSA_Control';
+        prePath = 'HCTSA_RightCTX';
+    case 'control'
+        prePath = 'HCTSA_Control';
     otherwise
         error('Unknown region ''%s''',leftOrRight);
 end
@@ -59,6 +59,11 @@ case 'CAMK_Excitatory_PVCre_SHAM'
       rawDataBL = fullfile(prePath,'HCTSA_CAMK_Excitatory_PVCre_SHAM_baselineSub.mat');
       dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_PVCre_SHAM_%s.mat',whatTimePoint));
       dataTimeNorm = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_PVCre_SHAM_%s_N.mat',whatTimePoint));
+ case 'CAMK_Excitatory_PVCre'
+       rawData = fullfile(prePath,'HCTSA_CAMK_Excitatory_PVCre.mat');
+       rawDataBL = fullfile(prePath,'HCTSA_CAMK_Excitatory_PVCre_baselineSub.mat');
+       dataTime = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_PVCre_%s.mat',whatTimePoint));
+       dataTimeNorm = fullfile(prePath,sprintf('HCTSA_CAMK_Excitatory_PVCre_%s_N.mat',whatTimePoint));
 case 'Excitatory_PVCre'
     rawData = fullfile(prePath,'HCTSA_Exc_PVCre.mat');
     rawDataBL = fullfile(prePath,'HCTSA_Exc_PVCre_baselineSub.mat');
