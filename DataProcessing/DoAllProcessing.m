@@ -22,8 +22,8 @@ classVarFilter = true;
 filterOpt = [0.5,1];
 
 % The areas to analyze:
-%whatRegions = {'right','left','control'};
-whatRegions = {'right','left'};
+whatRegions = {'right','left','control'};
+%whatRegions = {'right','left'};
 numRegs = length(whatRegions);
 
 % The types of data groupings to investigate:
