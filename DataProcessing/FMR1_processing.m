@@ -23,5 +23,5 @@ for i = 1:numRegions
     % Label groups:
     TS_LabelGroups(filteredFilename,{'AWT','KO'});
     % Normalize:
-    TS_Normalize(normFunction,filterParams,filteredFilename,true);
+    TS_normalize(normFunction,filterParams,filteredFilename,true);
 end

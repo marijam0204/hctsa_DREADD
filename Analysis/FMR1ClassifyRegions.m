@@ -3,7 +3,7 @@
 
 numFolds = 10;
 numRepeats = 10;
-nullsPerRegion = 5;
+nullsPerRegion = 50; %change to 50+ this is just to quickly run this.
 
 %-------------------------------------------------------------------------------
 [regionKeywords,regionName,whatHemisphere] = GiveMeFMR1Info();
@@ -16,7 +16,7 @@ nullStat = cell(numRegions,1);
 for i = 1:numRegions
     thisReg = regionKeywords{i};
     fprintf(1,'-----Region %u/%u---%s: %s (%s)-----\n',i,numRegions,...
-                thisReg,regionName{i},char(whatHemisphere{i}));
+                thisReg,regionName{i},char(whatHemisphere(i)));
     normalizedData = fullfile('HCTSA_FMR1',sprintf('HCTSA_%s_N.mat',thisReg));
     [foldLosses{i},nullStat{i}] = TS_classify(normalizedData,'svm_linear',...
                                     'numNulls',nullsPerRegion,...

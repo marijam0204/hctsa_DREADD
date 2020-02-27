@@ -1,17 +1,18 @@
 
-numNullsPerRegion = 10;
+numNullsPerRegion = 500;
 
 %-------------------------------------------------------------------------------
 % Get trained model from PVCre-SHAM
-[~,~,~,~,dataTimeNorm] = GiveMeLeftRightInfo('right','PVCre_SHAM','ts2-BL');
-PVCreSham_norm = LoadDataFile(dataTimeNorm,'all');
+[~,~,~,~,dataTimeNorm] = GiveMeLeftRightInfo('right','Excitatory_SHAM','ts2-BL');
+EXTSham_norm = LoadDataFile(dataTimeNorm,'all');
 % Train the model on the data:
 whatClassifier = 'svm_linear';
-XTrain = PVCreSham_norm.TS_DataMat;
-yTrain = PVCreSham_norm.TimeSeries.Group;
+XTrain = EXTSham_norm.TS_DataMat;  % PVCreSham_norm.TS_DataMat
+yTrain = EXTSham_norm.TimeSeries.Group; %PVCreSham_norm.TimeSeries.Group
 whatLoss = 'balancedAcc';
 reWeight = true;
-PVCreFeatureNames = PVCreSham_norm.Operations.Name; % [PVCre,SHAM]
+EXTFeatureNames = EXTSham_norm.Operations.Name;
+%PVCreFeatureNames = PVCreSham_norm.Operations.Name; % [PVCre,SHAM]
 
 %-------------------------------------------------------------------------------
 % Go through and evaluate model on FMR1 data:
@@ -29,7 +30,7 @@ for i = 1:numRegions
     FMR1FeatureNames = normalizedData.Operations.Name;
 
     % Match features:
-    [~,ia,ib] = intersect(PVCreFeatureNames,FMR1FeatureNames);
+    [~,ia,ib] = intersect(EXTFeatureNames,FMR1FeatureNames); %PVCreFeatureNames
     [~,Mdl,whatLoss] = GiveMeCfn(whatClassifier,XTrain(:,ia),yTrain,[],[],2,true,whatLoss,reWeight);
 
     XTest = normalizedData.TS_DataMat(:,ib);
