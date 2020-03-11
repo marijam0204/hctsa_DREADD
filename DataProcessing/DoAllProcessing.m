@@ -27,7 +27,7 @@ whatRegions = {'right','left','control'};
 numRegs = length(whatRegions);
 
 % The types of data groupings to investigate:
-whatAnalysis={'CAMK_Excitatory_PVCre'};
+whatAnalysis={'CAMK_Excitatory'};
 %whatAnalysis = {'SST_SSTcnt','SST_SHAM',...
                 %'SST_PV',...
                 %'PV_SHAM','PV_SSTcnt',SST_SSTcnt_PV};
