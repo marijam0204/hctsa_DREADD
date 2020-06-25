@@ -1,4 +1,4 @@
-function SplitByTimePoint(whatAnalysis,doBL,whatNormalization)
+DOfunction SplitByTimePoint(whatAnalysis,doBL,whatNormalization)
 % Splits the required HCTSA files by individual time point
 %-------------------------------------------------------------------------------
 

@@ -8,7 +8,7 @@ fileNames = {files.name}';
 numFiles = length(fileNames);
 
 %
-numRegions = 46;
+numRegions = 130;
 numTS = numFiles*numRegions;
 
 % Initialize:
